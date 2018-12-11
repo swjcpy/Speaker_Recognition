@@ -14,11 +14,8 @@
       <change beforePath="$PROJECT_DIR$/../Homework6/venv/DFS.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework6/venv/DFS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Homework6/venv/Problem.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework6/venv/Problem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Homework6/venv/testField.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Homework6/venv/testField.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/MFCC.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/MFCC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/sa1.wav" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Project$MFCC.coverage" NAME="MFCC Coverage Results" MODIFIED="1544478619706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
+    <SUITE FILE_PATH="coverage/Project$MFCC.coverage" NAME="MFCC Coverage Results" MODIFIED="1544479125038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1436651258">
@@ -40,39 +37,50 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="npy" value="2" />
-          <entry key="py" value="1" />
+          <entry key="py" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="1" />
+          <entry key="Python" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1736" />
+          <entry key="py" value="2514" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1736" />
+          <entry key="Python" value="2514" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/MFCC.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="67" column="44" lean-forward="true" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+            <state relative-caret-position="38">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1544478869038" expanded="true" signature="109:110" ph="..." />
-                <marker date="1544478869038" expanded="true" signature="312:2335" ph="..." />
-                <marker date="1544478869038" expanded="true" signature="920:2312" ph="..." />
+                <marker date="1544496061295" expanded="true" signature="85:86" ph="..." />
+                <marker date="1544496061295" expanded="true" signature="288:2167" ph="..." />
+                <marker date="1544496061295" expanded="true" signature="896:2144" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/venv/CNN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+              <folding>
+                <marker date="1544500252777" expanded="true" signature="323:408" ph="..." />
               </folding>
             </state>
           </provider>
@@ -94,6 +102,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/venv/MFCC.py" />
+        <option value="$PROJECT_DIR$/venv/CNN.py" />
       </list>
     </option>
   </component>
@@ -211,17 +220,17 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18336888" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18336888" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -245,13 +254,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/MFCC.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="67" column="44" lean-forward="true" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1544478869038" expanded="true" signature="109:110" ph="..." />
-            <marker date="1544478869038" expanded="true" signature="312:2335" ph="..." />
-            <marker date="1544478869038" expanded="true" signature="920:2312" ph="..." />
+            <marker date="1544496061295" expanded="true" signature="85:86" ph="..." />
+            <marker date="1544496061295" expanded="true" signature="288:2167" ph="..." />
+            <marker date="1544496061295" expanded="true" signature="896:2144" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/CNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding>
+            <marker date="1544500252777" expanded="true" signature="323:408" ph="..." />
           </folding>
         </state>
       </provider>
