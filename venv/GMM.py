@@ -6,7 +6,7 @@ import sklearn.mixture
 import sys
 import glob
 
-def fit(frames, test_ratio=0.2, n_components=4):
+def fit(frames, test_ratio=0.4, n_components=1):
     index = np.arange(len(frames))
     np.random.shuffle(index)
 
@@ -15,7 +15,7 @@ def fit(frames, test_ratio=0.2, n_components=4):
 
     gmm = sklearn.mixture.GaussianMixture(n_components=n_components)
     # gmm.fit(frames[train_idx])
-    gmm.fit(frames[1:40])
+    gmm.fit(frames[1:17])
 
     return gmm, frames[test_idx]
 

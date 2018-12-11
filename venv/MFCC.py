@@ -37,18 +37,25 @@ def initialTrainingAndTestingDataForCNN(nMFCC, trainNum, trainSetColumnNum):
             mfccSet = mfcc(file,nMFCC)
             row,column = mfccSet.shape
             for t in range(column - trainSetColumnNum):
-                slide = mfccSet[:,t : t + trainSetColumnNum]
+                slide = np.ones([ 13, 13, 1 ])
+                slide[ :, :, 0 ] = mfccSet[:,t : t + trainSetColumnNum]
                 listOfTrainingData.append(slide)
-                listOfTrainingLabel.append(countOfSpeaker)
+                vector = np.zeros([11])
+                vector[countOfSpeaker] = 1
+                listOfTrainingLabel.append(vector)
 
         for i in range(trainNum,10):
             file = "wavFiles/" + str(countOfSpeaker) + "/" + str(i) + ".wav"
             mfccSet = mfcc(file, nMFCC)
             row, column = mfccSet.shape
             for t in range(column - trainSetColumnNum):
-                slide = mfccSet[ :, t: t + trainSetColumnNum ]
+                slide = np.ones([13,13,1])
+                slide[:,:,0] = mfccSet[ :, t: t + trainSetColumnNum ]
+
                 listOfTestingData.append(slide)
-                listOfTestingLabel.append(countOfSpeaker)
+                vector = np.zeros([ 11 ])
+                vector[ countOfSpeaker ] = 1
+                listOfTestingLabel.append(vector)
 
 
     np.save("trainingData.npy",listOfTrainingData)
