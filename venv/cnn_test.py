@@ -1,9 +1,6 @@
 import numpy as np
 import tensorflow as tf
 
-# sess = tf.InteractiveSession()
-# listTestAcc = []
-# listTrainAcc = []
 train_X = np.load("trainingData.npy")
 test_X = np.load("testingData.npy")
 train_y = np.load("trainingLabel.npy")
@@ -113,7 +110,7 @@ with tf.Session() as sess:
                       "{:.5f}".format(acc))
         print("Optimization Finished!"+str(i))
 
-        # Calculate accuracy for all 10000 mnist test images
+        # Calculate accuracy for all test images
         test_acc,valid_loss = sess.run([accuracy,cost], feed_dict={x: test_X,y : test_y})
         train_loss.append(loss)
         test_loss.append(valid_loss)
