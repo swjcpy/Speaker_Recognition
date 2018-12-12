@@ -37,7 +37,7 @@ def initialTrainingAndTestingDataForCNN(nMFCC, trainNum, trainSetColumnNum):
             mfccSet = mfcc(file,nMFCC)
             row,column = mfccSet.shape
             for t in range(column - trainSetColumnNum):
-                slide = np.ones([ 13, 13, 1 ])
+                slide = np.ones([ 16, 16, 1 ])
                 slide[ :, :, 0 ] = mfccSet[:,t : t + trainSetColumnNum]
                 listOfTrainingData.append(slide)
                 vector = np.zeros([11])
@@ -49,7 +49,7 @@ def initialTrainingAndTestingDataForCNN(nMFCC, trainNum, trainSetColumnNum):
             mfccSet = mfcc(file, nMFCC)
             row, column = mfccSet.shape
             for t in range(column - trainSetColumnNum):
-                slide = np.ones([13,13,1])
+                slide = np.ones([16,16,1])
                 slide[:,:,0] = mfccSet[ :, t: t + trainSetColumnNum ]
 
                 listOfTestingData.append(slide)
@@ -67,4 +67,4 @@ def initialTrainingAndTestingDataForCNN(nMFCC, trainNum, trainSetColumnNum):
 # os.mkdir("wavFiles")
 # initialFiles("F:\武汉大学\物联网\学习\\2016-2017\毕业设计\\timit_test_1-3\dr1")
 # mfcc("wavFiles/0/0.wav",13)
-initialTrainingAndTestingDataForCNN(13,8,13)
+initialTrainingAndTestingDataForCNN(16,5,16)
