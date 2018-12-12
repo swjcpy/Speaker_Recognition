@@ -6,16 +6,16 @@ import sklearn.mixture
 import sys
 import glob
 
-def fit(frames, test_ratio=0.4, n_components=1):
+def fit(frames, test_ratio=0.2, n_components=11):
     index = np.arange(len(frames))
+    np.random.seed(0)
     np.random.shuffle(index)
 
     train_idx = index[int(len(index) * test_ratio):]
     test_idx = index[:int(len(index) * test_ratio)]
 
     gmm = sklearn.mixture.GaussianMixture(n_components=n_components)
-    # gmm.fit(frames[train_idx])
-    gmm.fit(frames[1:17])
+    gmm.fit(frames[train_idx])
 
     return gmm, frames[test_idx]
 
@@ -38,13 +38,18 @@ def evaluate(gmms, test_frames):
 
 if __name__ == '__main__':
     gmms, test_frames = {}, {}
-    t = 0
+    for t in range(11):
+        name = t
+        print 'Processing %s ...' % name
 
-    for t in range(10):
-        for filename in glob.glob('wavFiles/'+str(t)+'/0.wav'):
+        i = 0
+        for filename in glob.glob('wavFiles/'+str(t)+'/'+str(i)+'.wav'):
+            if i == 0:
+                mfccs = MFCC.mfcc(filename,13)
+            else:
+                mfccs = np.hstack((mfccs, MFCC.mfcc(filename,13)))
+            i += 1
             # name = os.path.splitext(os.path.basename(filename))[0]
-            name = t
-            print 'Processing %s ...' % name
-            gmms[name], test_frames[name] = fit(MFCC.mfcc(filename,13).T)
+        gmms[name], test_frames[name] = fit(mfccs.T)
 
     evaluate(gmms, test_frames)
