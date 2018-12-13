@@ -6,7 +6,7 @@ import sklearn.mixture
 import sys
 import glob
 
-def fit(frames, test_ratio=0.2, n_components=11):
+def fit(frames, test_ratio=0.5, n_components=11):
     index = np.arange(len(frames))
     np.random.seed(0)
     np.random.shuffle(index)
