@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 train_X = np.load("trainingData.npy")
 test_X = np.load("testingData.npy")
@@ -118,3 +119,8 @@ with tf.Session() as sess:
         test_accuracy.append(test_acc)
         print("Testing Accuracy:","{:.5f}".format(test_acc))
     summary_writer.close()
+
+    np.save("train_loss.npy",train_loss)
+    np.save("train_accuracy.npy",train_accuracy)
+    np.save("test_loss.npy", test_loss)
+    np.save("test_accuracy.npy", test_accuracy)
