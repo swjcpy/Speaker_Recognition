@@ -2,54 +2,53 @@ import MFCC
 import librosa
 import numpy as np
 import os
-import sklearn.mixture
+from sklearn.mixture import GMM
 import sys
 import glob
+import warnings
+warnings.filterwarnings('ignore')
 
-def fit(frames, test_ratio=0.5, n_components=11):
-    index = np.arange(len(frames))
-    np.random.seed(0)
-    np.random.shuffle(index)
+train_X = np.load("trainingData.npy")
+test_X = np.load("testingData.npy")
+train_y = np.load("trainingLabel.npy")
+test_y = np.load("testingLabel.npy")
 
-    train_idx = index[int(len(index) * test_ratio):]
-    test_idx = index[:int(len(index) * test_ratio)]
+X_train = np.reshape(train_X, (train_X.shape[0],28*28))
+X_test = np.reshape(test_X, (test_X.shape[0],28*28))
+y_train = np.zeros(train_y.shape[0])
+y_test = np.zeros(test_y.shape[0])
+for i in range(train_y.shape[0]):
+    for j in range(11):
+        if train_y[i,j] == 1:
+            y_train[i] = j
+            break
+        j += 1
+for i in range(test_y.shape[0]):
+    for j in range(11):
+        if test_y[i,j] == 1:
+            y_test[i] = j
+            break
+        j += 1
 
-    gmm = sklearn.mixture.GaussianMixture(n_components=n_components)
-    gmm.fit(frames[train_idx])
+# Try GMMs using different types of covariances.
+n_classes = 11
+classifiers = dict((covar_type, GMM(n_components=n_classes,
+                    covariance_type=covar_type, init_params='wc', n_iter=50))
+                   for covar_type in ['spherical', 'diag', 'tied', 'full'])
 
-    return gmm, frames[test_idx]
+for index, (name, classifier) in enumerate(classifiers.items()):
+    # Since we have class labels for the training data, we can
+    # initialize the GMM parameters in a supervised manner.
+    classifier.means_ = np.array([X_train[y_train == i].mean(axis=0)
+                                  for i in xrange(n_classes)])
 
-def predict(gmms, test_frame):
-    scores = []
-    for gmm_name, gmm in gmms.items():
-        scores.append((gmm_name, gmm.score(test_frame)))
-    return sorted(scores, key=lambda x: x[1], reverse=True)
+    # Train the other parameters using the EM algorithm.
+    classifier.fit(X_train)
 
-def evaluate(gmms, test_frames):
-    correct = 0
+    y_train_pred = classifier.predict(X_train)
+    train_accuracy = np.mean(y_train_pred.ravel() == y_train.ravel()) * 100
+    print('Train accuracy: %.1f' % train_accuracy)
 
-    for name in test_frames:
-        best_name, best_score = predict(gmms, test_frames[name])[0]
-        print 'Ground Truth: %s, Predicted: %s' % (name, best_name)
-        if name == best_name:
-            correct += 1
-
-    print 'Overall Accuracy: %f' % (float(correct) / len(test_frames))
-
-if __name__ == '__main__':
-    gmms, test_frames = {}, {}
-    for t in range(11):
-        name = t
-        print 'Processing %s ...' % name
-
-        i = 0
-        for filename in glob.glob('wavFiles/'+str(t)+'/'+str(i)+'.wav'):
-            if i == 0:
-                mfccs = MFCC.mfcc(filename,13)
-            else:
-                mfccs = np.hstack((mfccs, MFCC.mfcc(filename,13)))
-            i += 1
-            # name = os.path.splitext(os.path.basename(filename))[0]
-        gmms[name], test_frames[name] = fit(mfccs.T)
-
-    evaluate(gmms, test_frames)
+    y_test_pred = classifier.predict(X_test)
+    test_accuracy = np.mean(y_test_pred.ravel() == y_test.ravel()) * 100
+    print('Test accuracy: %.1f' % test_accuracy)
